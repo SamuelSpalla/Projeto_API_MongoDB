@@ -4,35 +4,35 @@ const app = express()
 
 
 
+
+//forma de ler json
 app.use(
     express.urlencoded({
-        extended:true
+        extended: true
     })
 )
+
 app.use(express.json())
 
+//rotas da api
 
-const personRoutes = require('./routes/personRoutes')
+const productRoutes = require('./routes/productRoutes')
 
-app.use('/person', personRoutes)
+app.use('/product', productRoutes)
 
+// rota inicial 
+app.get('/', (req, res) =>{
 
-
-
-app.get('/', (req, res) => {
-
-    res.json({message: 'Oi espress!'})
+    res.json({message: 'Está funcionando'})
+    
 })
 
+const senha = encodeURIComponent('VerZwC62n5IWWrsr')
+const user = 'Nilson'
 
-mongoose
-.connect('mongodb+srv://Samuel:Sssilva7191012@apicluster.kygsafc.mongodb.net/MeuBanco?retryWrites=true&w=majority')
-.then(()=>{
-    console.log('Deu certo')
+mongoose.connect(`mongodb+srv://${user}:${senha}@cluster0.mtwp5px.mongodb.net/?retryWrites=true&w=majority`)
+.then(() =>{
+    console.log('Conectamos ao MongoDB!')
     app.listen(3000)
 })
 .catch((err) => console.log(err))
-
-
-
-
