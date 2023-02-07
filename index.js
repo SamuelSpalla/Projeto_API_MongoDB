@@ -1,5 +1,5 @@
 const express = require('express')
-
+const mongoose = require('mongoose')
 const app = express()
 
 //forma de ler json
@@ -11,12 +11,23 @@ app.use(
 
 app.use(express.json())
 
+// mostrar req/res
+
+
 app.get('/', (req, res) =>{
 
-    // mostrar req
-
-    res.json({message: 'Oi Express!'})
-
+    res.json({message: 'Está funcionando'})
+    
 })
 
-app.listen(3000)
+const senha = encodeURIComponent('VerZwC62n5IWWrsr')
+const user = 'Nilson'
+
+mongoose.connect(`mongodb+srv://${user}:${senha}@cluster0.mtwp5px.mongodb.net/?retryWrites=true&w=majority`)
+.then(() =>{
+    console.log('Conectamos ao MongoDB!')
+    app.listen(3000)
+})
+.catch((err) => console.log(err))
+
+
