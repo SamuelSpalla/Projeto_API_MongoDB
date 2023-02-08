@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const app = express()
 
 
@@ -13,6 +14,14 @@ app.use(
 )
 
 app.use(express.json())
+
+//cors
+app.use((req, res, next) =>{
+    console.log('Acessou o Middleware')
+    res.header("Access-Control-Allow-Origin", "*")
+    app.use(cors())
+    next()
+})
 
 //rotas da api
 

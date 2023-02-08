@@ -45,7 +45,9 @@ router.get('/', async (req,res) =>{
 
     }catch(error){
         res.status(500).json({error: error})
+        
     }
+
 
 })
 
@@ -69,6 +71,7 @@ router.get('/:id', async (req, res)=>{
         res.status(500).json({error: error})
     }
 
+    
 })
 
 //atualização de dados
