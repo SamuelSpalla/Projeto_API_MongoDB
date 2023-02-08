@@ -1,13 +1,12 @@
-
 const router = require('express').Router()
 
 const Product = require('../models/Product')
 
 
-//criação de dados
+
 router.post('/', async (req, res) =>{
      
-    const { name, price, fragile } = req.body
+    const { name, price, code, quantity, minimum_stock, quality,} = req.body
 
     if(!name) {
         res.status(422).json({error:'dado obrigatório'})
@@ -15,9 +14,13 @@ router.post('/', async (req, res) =>{
     }
 
     const productObj = {
-        name, 
-        price, 
-        fragile,
+        name,
+        price,
+        code,
+        quantity,
+        minimum_stock,
+        quality,
+
     }
 
     try{
@@ -32,13 +35,13 @@ router.post('/', async (req, res) =>{
 
 })
 
-// leitura de dados
+
 
 router.get('/', async (req,res) =>{
 
     try{
 
-        const products = await Product.find() //retorna todos os dados da colection
+        const products = await Product.find() 
         
         res.status(200).json(products)
         console.log(products)
@@ -53,7 +56,7 @@ router.get('/', async (req,res) =>{
 
 router.get('/:id', async (req, res)=>{
 
-    //extrair dado da requisição, pela url = req.params
+    
     const id = req.params.id
    
     try{
@@ -74,25 +77,29 @@ router.get('/:id', async (req, res)=>{
     
 })
 
-//atualização de dados
+
 
 router.patch('/:id', async (req, res) =>{
 
     const id = req.params.id
 
-    const { name, price, fragile } = req.body
+    const { name, price, code, quantity, minimum_stock, quality,} = req.body
+
     
     const productObj = {
-        name, 
-        price, 
-        fragile,
-    }
+        name,
+        price,
+        code,
+        quantity,
+        minimum_stock,
+        quality,
 
+    }
     try{
 
         const updatedProduct = await Product.updateOne({_id: id}, productObj)
 
-        if(updatedProduct.matchedCount === 0){ //caso tenha atualizado 0 registros...
+        if(updatedProduct.matchedCount === 0){ 
             res.status(422).json({message: 'O produto não foi encontrado!'})
             return
         }
@@ -106,7 +113,7 @@ router.patch('/:id', async (req, res) =>{
 
 })
 
-//deletar dados
+
 
 router.delete('/:id', async (req, res) =>{
     
