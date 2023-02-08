@@ -1,6 +1,6 @@
 const resultado = document.querySelector('#resultado')
 
-const url = 'http://20.226.250.33:3000/product'
+const url = 'http://18.230.76.165:3000/product'
 
 const newProduct = {
     name: 'pedra',
