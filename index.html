@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=(self)">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-</head>
-<body>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=(self)">
+        <title>Controle de estoque</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script  src="./js/script.js" defer></script>
+        <link rel="stylesheet" href="./css/main.min.css">
     
-    <div id="resultado"></div>
-    <script  src="script.js"></script>
-
-</body>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="title">Controle de estoque</h1>
+        </header>
+        <div class="container">
+            <ul class="s-storage card">
+            </ul>
+            <div class="s-product card">
+            </div>
+            <div class="alert card">
+                <p class="title"></p>
+                <p class="description"></p>
+            </div>
+        </div>
+    </body>
 </html>
