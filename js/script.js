@@ -21,6 +21,7 @@ function postApi() {
 }
 
 function getApi() {
+    listaEstoque.innerHTML = ''
     axios.get(url)
         .then(response => {
             
@@ -168,7 +169,7 @@ function addProduct(produto) {
     axios.post(url, produto)
     .then(res => {})
     .catch(err => console.log(err))
-
+    getApi()
 }
 
 btnSubmit.addEventListener('click', () =>{
