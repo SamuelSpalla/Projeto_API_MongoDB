@@ -1,3 +1,5 @@
+const updateButton = document.querySelector('.update')
+
 const listaEstoque = document.querySelector('.s-storage'),
     produto = document.querySelector('.s-product'),
     alerta = document.querySelector('.alert'),
@@ -42,6 +44,7 @@ function getApi() {
 function renderProduct(id) {
     produto.innerHTML = ''
     produto.classList.remove('rotate')
+    console.log(id)
     axios.get(url + '/' + id)
     .then(response => {
         const product = response.data
@@ -80,8 +83,40 @@ function renderProduct(id) {
             checkValidity(dataactual, product.validate)
         }
         produto.classList.add('rotate')
+
+        const pAtt = document.createElement('button')
+        pAtt.classList.add('update')
+        produto.appendChild(pAtt)
+        pAtt.innerText = 'UPDATE'
+        
+       
+        const pDelete = document.createElement('button')
+        pDelete.classList.add('update')
+        produto.appendChild(pDelete)
+        pDelete.innerText = 'DELETE'
+        
+        pDelete.addEventListener('click', ()=>{
+            deleteProduct(id)
+            produto.innerHTML = ''
+            listaEstoque.innerHTML = ''
+            setTimeout(()=>{
+                getApi()
+            }, 500)
+           
+        })
+        
+
+
     })
 }
+
+function deleteProduct(id) {
+    axios.delete(url + '/' + id)
+    .then(res => console.log('deleted', res))
+    .catch(err => console.log(err))
+}
+
+
 
 function checkStock(actualStock, minStock){
     alerta.innerHTML = ''
@@ -120,4 +155,7 @@ function checkValidity(actualValidity, expectedValidity){
           }, "5000")
     }
 }
+
+
+
 getApi()
