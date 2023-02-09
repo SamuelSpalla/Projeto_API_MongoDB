@@ -83,16 +83,17 @@ function renderProduct(id) {
             checkValidity(dataactual, product.validate)
         }
         produto.classList.add('rotate')
-
+        const divBtn = document.createElement('div')
+        divBtn.classList.add('divBtn')
         const pAtt = document.createElement('button')
         pAtt.classList.add('update')
-        produto.appendChild(pAtt)
+        divBtn.appendChild(pAtt)
         pAtt.innerText = 'UPDATE'
         
        
         const pDelete = document.createElement('button')
         pDelete.classList.add('update')
-        produto.appendChild(pDelete)
+        divBtn.appendChild(pDelete)
         pDelete.innerText = 'DELETE'
         
         pDelete.addEventListener('click', ()=>{
@@ -104,7 +105,8 @@ function renderProduct(id) {
             }, 500)
            
         })
-        
+        produto.appendChild(divBtn)
+
 
 
     })
