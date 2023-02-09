@@ -75,11 +75,18 @@
         .divBtn{
             width: 100%;
             height: 3rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             .update{
                 width: 40%;
                 height: 3rem;
-                margin: 0 5%;
-                background-color: #212121;
+                background-color: #1B5E20;
+            }
+            .remove{
+                width: 40%;
+                height: 3rem;
+                background-color: #BF360C;
             }
         }
     
