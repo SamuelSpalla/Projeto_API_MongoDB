@@ -88,13 +88,13 @@ function renderProduct(id) {
         const pAtt = document.createElement('button')
         pAtt.classList.add('update')
         divBtn.appendChild(pAtt)
-        pAtt.innerText = 'UPDATE'
+        pAtt.innerText = 'Atualizar'
         
        
         const pDelete = document.createElement('button')
         pDelete.classList.add('update')
         divBtn.appendChild(pDelete)
-        pDelete.innerText = 'DELETE'
+        pDelete.innerText = 'Deletar'
         
         pDelete.addEventListener('click', ()=>{
             deleteProduct(id)
