@@ -72,7 +72,7 @@ function renderProduct(id) {
             pMinQuantity.classList.add('minStock')
             pMinQuantity.textContent = 'Quantidade mínima:'+ product.minimum_stock
             produto.appendChild(pMinQuantity)
-            checkStock(product.stock, product.minimum_stock)
+            console.log(product.quantity, product.minimum_stock)
         }
         const pQuality = document.createElement('p')
         pQuality.classList.add('quality')
@@ -83,7 +83,6 @@ function renderProduct(id) {
             pValidate.classList.add('validate')
             pValidate.textContent = 'Validade: '+ product.validate
             produto.appendChild(pValidate)
-            checkValidity(dataactual, product.validate)
         }
         produto.classList.add('rotate')
         const divBtn = document.createElement('div')
@@ -92,8 +91,9 @@ function renderProduct(id) {
         pAtt.classList.add('update')
         divBtn.appendChild(pAtt)
         pAtt.innerText = 'UPDATE'
+
+        checkage(product.quantity, product.minimum_stock, dataactual, product.validate)
         
-       
         const pDelete = document.createElement('button')
         pDelete.classList.add('remove')
         divBtn.appendChild(pDelete)
@@ -125,19 +125,38 @@ function deleteProduct(id) {
 
 function checkStock(actualStock, minStock){
     alerta.innerHTML = ''
-    if(actualStock <= minStock){
-        const aTitle = document.createElement('p')
-        aTitle.classList.add('title')
-        aTitle.textContent = 'Estoque acabando'
-        alerta.appendChild(aTitle)
-        const aDesc = document.createElement('p')
-        aDesc.classList.add('description')
-        aDesc.textContent = 'Reponha urgentemente'
-        alerta.appendChild(aDesc)
-        alerta.classList.add('show')
-        setTimeout(() => {
-            alerta.classList.remove('show')
-          }, "5000")
+    if(minStock <= actualStock){
+        if(alerta.classList.contains('show')){
+            console.log('waiting')
+            setTimeout(()=>{
+                const aTitle = document.createElement('p')
+                aTitle.classList.add('title')
+                aTitle.textContent = 'Estoque acabando'
+                alerta.appendChild(aTitle)
+                const aDesc = document.createElement('p')
+                aDesc.classList.add('description')
+                aDesc.textContent = 'Reponha urgentemente'
+                alerta.appendChild(aDesc)
+                alerta.classList.add('show')
+                setTimeout(() => {
+                    alerta.classList.remove('show')
+                }, "5000")
+            }, '6000')
+        }
+        else {
+            const aTitle = document.createElement('p')
+            aTitle.classList.add('title')
+            aTitle.textContent = 'Estoque acabando'
+            alerta.appendChild(aTitle)
+            const aDesc = document.createElement('p')
+            aDesc.classList.add('description')
+            aDesc.textContent = 'Reponha urgentemente'
+            alerta.appendChild(aDesc)
+            alerta.classList.add('show')
+            setTimeout(() => {
+                alerta.classList.remove('show')
+            }, "5000")
+        }
     }
 }
 
@@ -159,6 +178,13 @@ function checkValidity(actualValidity, expectedValidity){
             alerta.classList.remove('show')
           }, "5000")
     }
+}
+
+function checkage(actualStock, minStock, actualValidity, expectedValidity){
+    checkStock(actualStock, minStock)
+    setTimeout(()=> {
+        checkValidity(actualValidity, expectedValidity)
+    }, "6000")
 }
 
 
