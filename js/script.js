@@ -1,4 +1,6 @@
+
 const updateButton = document.querySelector('.update')
+
 
 const listaEstoque = document.querySelector('.s-storage'),
     produto = document.querySelector('.s-product'),
@@ -88,13 +90,13 @@ function renderProduct(id) {
         const pAtt = document.createElement('button')
         pAtt.classList.add('update')
         divBtn.appendChild(pAtt)
-        pAtt.innerText = 'Atualizar'
+        pAtt.innerText = 'UPDATE'
         
        
         const pDelete = document.createElement('button')
-        pDelete.classList.add('remove')
+        pDelete.classList.add('update')
         divBtn.appendChild(pDelete)
-        pDelete.innerText = 'Remover'
+        pDelete.innerText = 'DELETE'
         
         pDelete.addEventListener('click', ()=>{
             deleteProduct(id)
@@ -158,6 +160,34 @@ function checkValidity(actualValidity, expectedValidity){
     }
 }
 
+
+const inputProduct = document.querySelectorAll('.inputProduct')
+const btnSubmit = document.querySelector('#submit')
+
+function addProduct(produto) {
+    axios.post(url, produto)
+    .then(res => {})
+    .catch(err => console.log(err))
+
+}
+
+btnSubmit.addEventListener('click', () =>{
+
+    let newProduct = {
+        
+        name: inputProduct[0].value,
+        price: +inputProduct[1].value,
+        code: +inputProduct[2].value,
+        quantity: +inputProduct[3].value ,
+        minimum_stock: +inputProduct[4].value ,
+        quality: inputProduct[5].value,
+        validate: inputProduct[6].value,
+    }
+
+    console.log(newProduct)
+    
+    addProduct(newProduct)
+})
 
 
 getApi()

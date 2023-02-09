@@ -20,7 +20,7 @@ router.post('/', async (req, res) =>{
         quantity,
         minimum_stock,
         quality,
-
+        
     }
 
     try{
