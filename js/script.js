@@ -173,7 +173,6 @@ function addProduct(produto) {
 }
 
 btnSubmit.addEventListener('click', () =>{
-
     let newProduct = {
         
         name: inputProduct[0].value,
