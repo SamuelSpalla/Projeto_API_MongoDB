@@ -95,7 +95,7 @@ function renderProduct(id) {
         
        
         const pDelete = document.createElement('button')
-        pDelete.classList.add('update')
+        pDelete.classList.add('remove')
         divBtn.appendChild(pDelete)
         pDelete.innerText = 'DELETE'
         
