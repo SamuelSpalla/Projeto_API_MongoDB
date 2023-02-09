@@ -182,7 +182,7 @@ btnSubmit.addEventListener('click', () =>{
         quantity: +inputProduct[3].value ,
         minimum_stock: +inputProduct[4].value ,
         quality: inputProduct[5].value,
-        validate: inputProduct[6].value,
+        validate: inputProduct[6].value
     }
 
     console.log(newProduct)

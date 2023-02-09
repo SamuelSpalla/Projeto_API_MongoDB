@@ -7,7 +7,7 @@ const Product = mongoose.model('Product', {
     quantity: Number,
     minimum_stock: Number,
     quality: String,
-    validate: String,
+    validate: String
 })
 
 module.exports = Product

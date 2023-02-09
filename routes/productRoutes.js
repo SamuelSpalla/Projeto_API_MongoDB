@@ -6,7 +6,7 @@ const Product = require('../models/Product')
 
 router.post('/', async (req, res) =>{
      
-    const { name, price, code, quantity, minimum_stock, quality,} = req.body
+    const { name, price, code, quantity, minimum_stock, quality, validate} = req.body
 
     if(!name) {
         res.status(422).json({error:'dado obrigatório'})
@@ -84,7 +84,7 @@ router.patch('/:id', async (req, res) =>{
 
     const id = req.params.id
 
-    const { name, price, code, quantity, minimum_stock, quality,} = req.body
+    const { name, price, code, quantity, minimum_stock, quality, validate} = req.body
 
     
     const productObj = {
