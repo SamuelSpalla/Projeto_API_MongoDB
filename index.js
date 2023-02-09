@@ -14,13 +14,16 @@ app.use(
 )
 
 app.use(express.json())
+app.options('*', cors())
 //cors
-app.options('*', cors()) // enable pre-flight request for DELETE request
-app.use(cors({
-    "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": true,
-  }));
+app.use((req, res, next) => {
+	res.header("access-control-allow-origin", "*",
+        'Access-Control-Allow-Headers', 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods', '*',
+      )
+    app.use(cors());
+    next();
+});
 
 //rotas da api
 
